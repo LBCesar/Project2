@@ -18,12 +18,14 @@ import android.widget.ImageView;
 public class CustomAdapter extends BaseAdapter {
 
     private Context context;
-    private int animals[] = {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
-            R.drawable.animal16, R.drawable.animal17, R.drawable.animal18,
-            R.drawable.animal15, R.drawable.animal16, R.drawable.animal17};
+    private int animals[];
+//    {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
+//            R.drawable.animal16, R.drawable.animal17, R.drawable.animal18,
+//            R.drawable.animal15, R.drawable.animal16, R.drawable.animal17};
     private LayoutInflater inflter;
 
     public CustomAdapter (Context applicationContext, int[] animals){
+//        super(); // ??? needed maybe
         this.context = applicationContext;
         this.animals = animals;
         inflter = (LayoutInflater.from(applicationContext));
@@ -49,9 +51,9 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     // class-demo
     public View getView(int position, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.activity_gridview, null);    // null is going to be true or false
+        view = inflter.inflate(R.layout.activity_gridview, null);    // null is going to be true or false -> this problem?
         ImageView icon = view.findViewById(R.id.icon);
-        icon.setImageResource(animals[position]);  // no loop needed cuz the adapted auto does it
+        icon.setImageResource(animals[position]);
         return view;
     }
 

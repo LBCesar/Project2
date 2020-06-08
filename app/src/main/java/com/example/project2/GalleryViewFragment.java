@@ -11,9 +11,9 @@ import android.widget.GridView;
 public class GalleryViewFragment extends Fragment {
 
     GridView simpleGridView;
-    Context context = getActivity();
+//    Context context = getActivity();
 
-    int animals[] = {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
+    int[] animals = {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
             R.drawable.animal16, R.drawable.animal17, R.drawable.animal18,
             R.drawable.animal15, R.drawable.animal16, R.drawable.animal17};
 
@@ -30,8 +30,8 @@ public class GalleryViewFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_gallery_view, container, false);
 
         // class
-        simpleGridView = v.findViewById(R.id.gridView);
-        CustomAdapter customAdapter = new CustomAdapter(context.getApplicationContext(), animals); // getApplicationContext()
+        simpleGridView = (GridView) v.findViewById(R.id.gridView);
+        CustomAdapter customAdapter = new CustomAdapter(getActivity(), animals); // getApplicationContext()
         simpleGridView.setAdapter(customAdapter);
 
         return v;
