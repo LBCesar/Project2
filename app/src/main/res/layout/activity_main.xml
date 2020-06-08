@@ -22,4 +22,16 @@
         android:layout_height="184dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+<!--    checking fragment for gallery-->
+<!--    <fragment-->
+<!--        android:name="com.example.project2.GalleryViewFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:id="@+id/GalleryViewFragment"-->
+<!--        tools:layout="@layout/fragment_gallery_view" />-->
+
 </android.support.constraint.ConstraintLayout>

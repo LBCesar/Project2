@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,4 +60,24 @@ public class fragment2 extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fragment2, container, false);
     }
+
+    // same function for both checkboxes (gallery & slideshow)??
+    public void onCheckboxClicked(View view){
+        // is view checked?
+        boolean checked = ((CheckBox) view).isChecked();
+        // Check if the box was checked or not?
+        switch (view.getId()){
+            case R.id.checkBox: // this is gallery checkbox id
+                if (checked){   // open a new fragment with grid layout
+                    // coding
+                }
+                else{
+                    //coding
+                    break;
+                }
+        }
+    }   // end on-click check box
+
+
+
 }
