@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class fragment2 extends Fragment {
 
 
     Button button1;
-    Button btnGalleryView;
+//    Button btnGalleryView;
+    CheckBox checkBox;
 
     public fragment2() {
         // Required empty public constructor
@@ -28,18 +30,42 @@ public class fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_fragment2, container, false);
+        final View view =  inflater.inflate(R.layout.fragment_fragment2, container, false);
 
-        // action listener with button
-        btnGalleryView = view.findViewById(R.id.btnGalleryView);
-        btnGalleryView.setOnClickListener(new View.OnClickListener() {
+//         action listener with button
+//        btnGalleryView = view.findViewById(R.id.btnGalleryView);
+//        btnGalleryView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GalleryViewFragment galleryFragment = new GalleryViewFragment();
+//                FragmentManager manager = getFragmentManager();
+//                manager.beginTransaction()
+//                        .replace(R.id.main, galleryFragment, galleryFragment.getTag())
+//                        .commit();
+//            }
+//        });
+
+        //checkbox gallery
+
+        checkBox = view.findViewById(R.id.checkBox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GalleryViewFragment galleryFragment = new GalleryViewFragment();
-                FragmentManager manager = getFragmentManager();
-                manager.beginTransaction()
-                        .replace(R.id.main, galleryFragment, galleryFragment.getTag())
-                        .commit();
+                boolean isChecked = checkBox.isChecked();
+
+                if (isChecked){
+                    GalleryViewFragment galleryFragment = new GalleryViewFragment();
+                    FragmentManager manager = getFragmentManager();
+                    manager.beginTransaction()
+                            .replace(R.id.main, galleryFragment, galleryFragment.getTag())
+                            .commit();
+                    checkBox.setEnabled(true);
+                }
+                else{
+                    checkBox.setChecked(false); // do same for above or it will not be enabled?
+                }
+
+
             }
         });
 
