@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--Comments:
-***fragment1 is the top half which will contain the pictures.
-Changed the color to see how this looks like in the phone screen.
- - Both fragment looks working in phone
--->
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

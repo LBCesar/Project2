@@ -18,19 +18,18 @@ import android.widget.ImageView;
 public class CustomAdapter extends BaseAdapter {
 
     private Context context;
+    private LayoutInflater inflter;
     private int animals[];
 //    {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
 //            R.drawable.animal16, R.drawable.animal17, R.drawable.animal18,
 //            R.drawable.animal15, R.drawable.animal16, R.drawable.animal17};
-    private LayoutInflater inflter;
+
 
     public CustomAdapter (Context applicationContext, int[] animals){
-//        super(); // ??? needed maybe
         this.context = applicationContext;
         this.animals = animals;
         inflter = (LayoutInflater.from(applicationContext));
     }
-
 
     @Override
     public int getCount() {     // get total number of items
@@ -49,9 +48,8 @@ public class CustomAdapter extends BaseAdapter {
 
     @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
-    // class-demo
     public View getView(int position, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.activity_gridview, null);    // null is going to be true or false -> this problem?
+        view = inflter.inflate(R.layout.activity_gridview, null);
         ImageView icon = view.findViewById(R.id.icon);
         icon.setImageResource(animals[position]);
         return view;

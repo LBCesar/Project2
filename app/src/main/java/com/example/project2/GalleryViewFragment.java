@@ -26,12 +26,10 @@ public class GalleryViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_gallery_view, container, false);
 
-        // class
-        simpleGridView = (GridView) v.findViewById(R.id.gridView);
-        CustomAdapter customAdapter = new CustomAdapter(getActivity(), animals); // getApplicationContext()
+        simpleGridView = v.findViewById(R.id.gridView);
+        CustomAdapter customAdapter = new CustomAdapter(getActivity(), animals); // getApplicationContext() is getActivity()
         simpleGridView.setAdapter(customAdapter);
 
         return v;

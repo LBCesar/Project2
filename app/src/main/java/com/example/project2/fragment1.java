@@ -21,13 +21,16 @@ public class fragment1 extends Fragment {
     private int imgNum;
     ImageView animalPic;
 
+    // Constructor
+    public fragment1(){
 
-    public fragment1(){}
+    }
 
     //One parameter has changed to int, so we can take in the R.ID of the images.
     public static fragment1 newInstance(int param1, String param2) {
         fragment1 fragment = new fragment1();
         Bundle args = new Bundle();
+
         //New-Takes in an Int instead of a string.
         args.putInt(ARG_PARAM1,param1);
         args.putString(ARG_PARAM2, param2);

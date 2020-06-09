@@ -2,4 +2,10 @@
     <string name="app_name">Project 2: MyAlbum</string>
     <string name="send_message"><![CDATA[<<<]]></string>
     <string name="Image">image</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="slideshow">Slide Show</string>
+    <string name="galleryView">Gallery View</string>
+    <string name="Next">NEXT</string>
+    <string name="nextButton"><![CDATA[>>>]]></string>
+    <string name="txtPrevious">Previous</string>
 </resources>
