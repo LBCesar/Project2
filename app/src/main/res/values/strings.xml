@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Project2</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Project 2: MyAlbum</string>
     <string name="send_message"><![CDATA[<<<]]></string>
+    <string name="Image">image</string>
 </resources>

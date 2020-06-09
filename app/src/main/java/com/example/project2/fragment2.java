@@ -1,8 +1,10 @@
 package com.example.project2;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,61 +12,107 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment2#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class fragment2 extends Fragment {
+public class fragment2 extends Fragment  {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
 
-    Button button1;
-//    Button btnGalleryView;
+    Button fwd = null;
+    Button rvrs = null;
     CheckBox checkBox;
+    CheckBox checkBox2;
+
+    Context context;
+
+    int[] animals = {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
+            R.drawable.animal16, R.drawable.animal17, R.drawable.animal18,
+            R.drawable.animal15, R.drawable.animal16, R.drawable.animal17 };
+
+    //TIGER->LION->EAGLE->DOG->BIRD->SNAKE
+    private  fragment1 mFrag1;
+    int s=0;
 
     public fragment2() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment2.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment2 newInstance(String param1, String param2) {
-        fragment2 fragment = new fragment2();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view =  inflater.inflate(R.layout.fragment_fragment2, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_fragment2,
+                container, false);
+
+        fwd = root.findViewById(R.id.fwdButton);
+        rvrs=root.findViewById(R.id.rvrsButton);
+
+        fwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(s!=animals.length-1) {
+                    s++;
+                    Toast toast = Toast.makeText(getActivity(), "Next", Toast.LENGTH_LONG);
+                    toast.show();
+                    mFrag1 = fragment1.newInstance(animals[s], "Ha");
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment, mFrag1);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+            }
+        });
+
+        rvrs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(s!=0) {
+                    s--;
+                    Toast toast = Toast.makeText(getActivity(), "Reverse", Toast.LENGTH_LONG);
+                    toast.show();
+                    mFrag1 = fragment1.newInstance(animals[s], "Ha");
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment, mFrag1);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+            }
+        });
+
+        checkBox = root.findViewById(R.id.checkBox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {   // onClick
+                boolean isChecked = checkBox.isChecked();
+                FragmentManager manager = getFragmentManager();
+
+                    if (isChecked) {
+                    GalleryViewFragment galleryFragment = new GalleryViewFragment();
+//                        FragmentManager manager = getFragmentManager();
+                        manager.beginTransaction()
+//                            .replace(R.id.main, galleryFragment, galleryFragment.getTag())    // Not working: should replace fragment1
+                                .replace(R.id.fragment, galleryFragment)
+                                .commit();
+                        checkBox.setEnabled(true);
+                    }
+                    else {       // upon uncheck fragment1 should return -> so probably store it in a stack before replacing?
+                        fragment1 fragment = new fragment1();
+                        manager.beginTransaction().replace(R.id.fragment, fragment).commit();
+//                    checkBox.setChecked(true);
+                        checkBox.setEnabled(true);
+                    }
+                }
+
+        });
+
+        return root;
+    }
 
 //         action listener with button
+        //    Button btnGalleryView;
 //        btnGalleryView = view.findViewById(R.id.btnGalleryView);
 //        btnGalleryView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -77,51 +125,8 @@ public class fragment2 extends Fragment {
 //            }
 //        });
 
-        //checkbox gallery
-
-        checkBox = view.findViewById(R.id.checkBox);
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isChecked = checkBox.isChecked();
-
-                if (isChecked){
-                    GalleryViewFragment galleryFragment = new GalleryViewFragment();
-                    FragmentManager manager = getFragmentManager();
-                    manager.beginTransaction()
-                            .replace(R.id.main, galleryFragment, galleryFragment.getTag())
-                            .commit();
-                    checkBox.setEnabled(true);
-                }
-                else{
-                    checkBox.setChecked(false); // do same for above or it will not be enabled?
-                }
-
-
-            }
-        });
-
-        return view;
-    }
-
-
-    // same function for both checkboxes (gallery & slideshow)??
-    public void onCheckboxClicked(View view){
-        // is view checked?
-        boolean checked = ((CheckBox) view).isChecked();
-        // Check if the box was checked or not?
-        switch (view.getId()){
-            case R.id.checkBox: // this is gallery checkbox id
-                if (checked){   // open a new fragment with grid layout
-                    // coding
-                }
-                else{
-                    //coding
-                    break;
-                }
-        }
-    }   // end on-click check box
-
 
 
 }   // end fragment2
+
+

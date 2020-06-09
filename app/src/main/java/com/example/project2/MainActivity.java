@@ -8,11 +8,6 @@ import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    // this goes inside gridviewfragment?? maybe
-//    GridView gridView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +15,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // main needs to take care of fragments
-}
+} // main
