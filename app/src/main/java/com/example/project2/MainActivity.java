@@ -11,9 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     // this goes inside gridviewfragment?? maybe
 //    GridView gridView;
-//    int animals[] = {R.drawable.animal13, R.drawable.animal14, R.drawable.animal15,
-//            R.drawable.animal16, R.drawable.animal17, R.drawable.animal18,
-//            R.drawable.animal15, R.drawable.animal16, R.drawable.animal17};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
