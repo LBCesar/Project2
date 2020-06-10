@@ -56,8 +56,6 @@ public class fragment1 extends Fragment {
 
         if(getArguments()!=null) {
             animalPic = root.findViewById(R.id.animalIMG);
-//            Toast toast=Toast.makeText(getActivity(), "Next", Toast.LENGTH_LONG);
-//            toast.show();
             animalPic.setImageResource(mParam1);
         }
 
