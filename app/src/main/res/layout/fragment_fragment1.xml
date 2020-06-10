@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/animalIMG"
         android:layout_width="match_parent"
-        android:layout_height="452dp"
+        android:layout_height="416dp"
         android:layout_gravity="top"
         android:layout_margin="5dp"
         android:contentDescription="@string/Image"
