@@ -54,7 +54,7 @@ public class fragment2 extends Fragment  {
         toast.show();
 
         // Replace the blank view with the first image in the folder
-        mFrag1 = fragment1.newInstance(animals[s], "");
+        mFrag1 = fragment1.newInstance(animals[s]);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment, mFrag1);
         transaction.addToBackStack(null);
@@ -84,7 +84,7 @@ public class fragment2 extends Fragment  {
                     slideShowCheckBox.setChecked(false);
                     slideShowCheckBox.setEnabled(true);
 
-                    mFrag1 = fragment1.newInstance(animals[s],"");  // Create a new fragment1 and pass the next image as an argument
+                    mFrag1 = fragment1.newInstance(animals[s]);  // Create a new fragment1 and pass the next image as an argument
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment, mFrag1); // Replace the fragment
                     transaction.addToBackStack(null);
@@ -117,7 +117,7 @@ public class fragment2 extends Fragment  {
                     slideShowCheckBox.setChecked(false);
                     slideShowCheckBox.setEnabled(true);
 
-                    mFrag1 = fragment1.newInstance(animals[s], ""); // Create a new fragment1 and pass the previous image as an argument
+                    mFrag1 = fragment1.newInstance(animals[s]); // Create a new fragment1 and pass the previous image as an argument
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment, mFrag1); // Replace the fragment
                     transaction.addToBackStack(null);
@@ -150,7 +150,7 @@ public class fragment2 extends Fragment  {
                         slideShowCheckBox.setEnabled(false);
                     }
                     else {       // upon uncheck fragment1 should return -> so probably store it in a stack before replacing?
-                        fragment1 fragment = fragment1.newInstance(animals[s], ""); // New
+                        fragment1 fragment = fragment1.newInstance(animals[s]); // New
                         Toast.makeText(getActivity(), "Exit Gallery", Toast.LENGTH_LONG).show();
                         manager.beginTransaction().replace(R.id.fragment, fragment).commit();
                         galleryCheckBox.setEnabled(true);
@@ -181,7 +181,7 @@ public class fragment2 extends Fragment  {
                     galleryCheckBox.setEnabled(false);
                 }
                 else{
-                    fragment1 fragment = fragment1.newInstance(animals[s], ""); // New
+                    fragment1 fragment = fragment1.newInstance(animals[s]); // New
                     Toast.makeText(getActivity(), "End Slide Show", Toast.LENGTH_LONG).show();
                     manager.beginTransaction().replace(R.id.fragment, fragment).commit();
                     galleryCheckBox.setEnabled(true);

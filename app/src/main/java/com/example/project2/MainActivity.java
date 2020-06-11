@@ -1,4 +1,7 @@
 package com.example.project2;
+//CECS 453 Project 2
+//Cesar Gonzalez
+//Shoraj Manandhar
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;

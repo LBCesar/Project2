@@ -13,12 +13,9 @@ import android.widget.Toast;
 public class fragment1 extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     private int mParam1;
-    private String mParam2;
 
-    private int imgNum;
     ImageView animalPic;
 
     // Constructor
@@ -27,15 +24,11 @@ public class fragment1 extends Fragment {
     }
 
     //One parameter has changed to int, so we can take in the R.ID of the images.
-    public static fragment1 newInstance(int param1, String param2) {
+    public static fragment1 newInstance(int param1) {
         fragment1 fragment = new fragment1();
         Bundle args = new Bundle();
-
-        //New-Takes in an Int instead of a string.
         args.putInt(ARG_PARAM1,param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -44,7 +37,6 @@ public class fragment1 extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getInt(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
